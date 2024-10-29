@@ -1,0 +1,79 @@
+1- #include <stdio.h>
+
+int main() {
+    int INDICE = 13, SOMA = 0, K = 0;
+    while (K < INDICE) {
+        K = K + 1;
+        SOMA = SOMA + K;
+    }
+    printf("O valor final de SOMA é: %d\n", SOMA);
+    return 0;
+}
+
+2- def fibonacci(num):
+  if num <= 1:
+    return num
+  else:
+    return fibonacci(num - 1) + fibonacci(num - 2)
+
+def pertence_fibonacci(num):
+  i = 0
+  while fibonacci(i) <= num:
+    if fibonacci(i) == num:
+      return True
+    i += 1
+  return False
+
+# Exemplo de uso:
+numero = int(input("Digite um número: "))
+if pertence_fibonacci(numero):
+  print(numero, "pertence à sequência de Fibonacci.")
+else:
+  print(numero, "não pertence à sequência de Fibonacci.")
+
+3- import json
+
+def analisar_faturamento(arquivo):
+    with open(arquivo, 'r') as f:
+        dados = json.load(f)
+
+    faturamentos = [valor for dia, valor in dados.items() if valor > 0]
+    if not faturamentos:
+        return None, None, 0
+
+    menor_valor = min(faturamentos)
+    maior_valor = max(faturamentos)
+    media = sum(faturamentos) / len(faturamentos)
+    dias_acima_media = sum(valor > media for valor in faturamentos)
+
+    return menor_valor, maior_valor, dias_acima_media
+arquivo_json = 'faturamento.json'  
+menor, maior, dias_acima = analisar_faturamento(arquivo_json)
+print("Menor valor:", menor)
+print("Maior valor:", maior)
+print("Dias acima da média:", dias_acima)
+
+4-def calcular_percentuais(dados):
+    total = sum(dados.values())
+    percentuais = {estado: (valor / total) * 100 for estado, valor in dados.items()}
+    return percentuais
+dados = {
+    'SP': 67836.43,
+    'RJ': 36678.66,
+    'MG': 29229.88,
+    'ES': 27165.48,
+    'Outros': 19849.53
+}
+percentuais = calcular_percentuais(dados)
+for estado, percentual in percentuais.items():
+    print(f"{estado}: {percentual:.2f}%")
+
+5-def inverter_string(string):
+    string_invertida = ""
+    for i in range(len(string) - 1, -1, -1):
+        string_invertida += string[i]
+    return string_invertida
+
+string = input("Digite uma string: ")
+string_invertida = inverter_string(string)
+print(string_invertida)
